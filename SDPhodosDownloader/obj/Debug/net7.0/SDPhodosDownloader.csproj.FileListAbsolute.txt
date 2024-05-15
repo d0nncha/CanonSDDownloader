@@ -1,0 +1,15 @@
+D:\Projects\CanonSDDownloader\SDPhodosDownloader\bin\Debug\net7.0\SDPhodosDownloader.exe
+D:\Projects\CanonSDDownloader\SDPhodosDownloader\bin\Debug\net7.0\SDPhodosDownloader.deps.json
+D:\Projects\CanonSDDownloader\SDPhodosDownloader\bin\Debug\net7.0\SDPhodosDownloader.runtimeconfig.json
+D:\Projects\CanonSDDownloader\SDPhodosDownloader\bin\Debug\net7.0\SDPhodosDownloader.dll
+D:\Projects\CanonSDDownloader\SDPhodosDownloader\bin\Debug\net7.0\SDPhodosDownloader.pdb
+D:\Projects\CanonSDDownloader\SDPhodosDownloader\obj\Debug\net7.0\SDPhodosDownloader.csproj.AssemblyReference.cache
+D:\Projects\CanonSDDownloader\SDPhodosDownloader\obj\Debug\net7.0\SDPhodosDownloader.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\CanonSDDownloader\SDPhodosDownloader\obj\Debug\net7.0\SDPhodosDownloader.AssemblyInfoInputs.cache
+D:\Projects\CanonSDDownloader\SDPhodosDownloader\obj\Debug\net7.0\SDPhodosDownloader.AssemblyInfo.cs
+D:\Projects\CanonSDDownloader\SDPhodosDownloader\obj\Debug\net7.0\SDPhodosDownloader.csproj.CoreCompileInputs.cache
+D:\Projects\CanonSDDownloader\SDPhodosDownloader\obj\Debug\net7.0\SDPhodosDownloader.dll
+D:\Projects\CanonSDDownloader\SDPhodosDownloader\obj\Debug\net7.0\refint\SDPhodosDownloader.dll
+D:\Projects\CanonSDDownloader\SDPhodosDownloader\obj\Debug\net7.0\SDPhodosDownloader.pdb
+D:\Projects\CanonSDDownloader\SDPhodosDownloader\obj\Debug\net7.0\SDPhodosDownloader.genruntimeconfig.cache
+D:\Projects\CanonSDDownloader\SDPhodosDownloader\obj\Debug\net7.0\ref\SDPhodosDownloader.dll
