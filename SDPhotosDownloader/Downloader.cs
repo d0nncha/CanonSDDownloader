@@ -8,15 +8,13 @@ public static class Downloader
 
     private static readonly Dictionary<string, IList<FileInfo>> SourceFiles = new ();
 
-    private static int _filesCounter = 0;
+    private static int _filesCounter;
 
-    private static double _fileSizeCounter = 0;
+    private static double _fileSizeCounter;
     
-    public static void Start(string src, string dest, DateTime fromDate, bool isOverride)
+    public static void Start(string src, string dest, DateTime fromDate, bool isOverwrite)
     {
         Console.WriteLine($"Destination folder: {dest}");
-        var destFreeSpace = GetDestinationFreeSpace(dest);
-        Console.WriteLine($"Available free space: {destFreeSpace:N} Mb");
         
         Console.WriteLine($"File upload start date: {fromDate:D}");
         
@@ -26,6 +24,9 @@ public static class Downloader
         _fileSizeCounter = 0.0;
         RecursiveDirectoryTraversal(src, fromDate);
         Console.WriteLine($"Number of source files: {_filesCounter}");
+        
+        var destFreeSpace = GetDestinationFreeSpace(dest);
+        Console.WriteLine($"Available free space: {destFreeSpace:N} Mb");
         Console.WriteLine($"The total size of the source files: {_fileSizeCounter:N} Mb");
 
         if (_fileSizeCounter >= destFreeSpace)
@@ -35,8 +36,12 @@ public static class Downloader
         }
         
         Console.WriteLine("The starting of downloading...");
-        Download(dest, SourceFiles, isOverride);
+        var downloadResult = Download(dest, SourceFiles, isOverwrite);
         Console.WriteLine("Download files finished!");
+        Console.WriteLine($"- {downloadResult.TotalProcessed} file(s) were processed");
+        Console.WriteLine($"- {downloadResult.TotalDownloaded} file(s) were downloaded");
+        Console.WriteLine($"- {downloadResult.Skipped} file(s) were skipped");
+        Console.WriteLine($"- {downloadResult.Overwritten} file(s) were overwritten");
     }
 
     private static void RecursiveDirectoryTraversal(string directoryPath, DateTime fromDate)
@@ -76,8 +81,10 @@ public static class Downloader
         }
     }
 
-    private static void Download(string destination, IDictionary<string, IList<FileInfo>> groupFiles, bool isOverride)
+    private static DownloadResult Download(string destination, IDictionary<string, IList<FileInfo>> groupFiles, bool isOverwrite)
     {
+        var result = new DownloadResult();
+        Console.Write("0%");
         foreach (var group in groupFiles)
         {
             var destFolder = Path.Combine(destination, group.Key);
@@ -89,9 +96,28 @@ public static class Downloader
             foreach (var fileInfo in group.Value)
             {
                 var destFileName = Path.Combine(destFolder, fileInfo.Name);
-                File.Copy(fileInfo.FullName, destFileName, isOverride);
+                result.TotalProcessed++;
+                if (File.Exists(destFileName))
+                {
+                    if (isOverwrite)
+                    {
+                        result.Overwritten++;
+                    }
+                    else
+                    {
+                        result.Skipped++;
+                        continue;
+                    }
+                }
+                File.Copy(fileInfo.FullName, destFileName, isOverwrite);
+                result.TotalDownloaded++;
             }
+
+            var donePercent = (double)result.TotalProcessed / _filesCounter;
+            Console.Write($"\r{donePercent:P}");
         }
+        Console.WriteLine();
+        return result;
     }
 
     private static double GetDestinationFreeSpace(string path)

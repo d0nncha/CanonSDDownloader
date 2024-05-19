@@ -7,7 +7,7 @@ var rootCommand = new RootCommand("Available commands for SDPhotosDownloader:")
     CLOptions.SrcOption,
     CLOptions.DestOption,
     CLOptions.DateOption,
-    CLOptions.IsOverride
+    CLOptions.IsOverwrite
 };
 
 rootCommand.SetHandler(
@@ -15,6 +15,6 @@ rootCommand.SetHandler(
     CLOptions.SrcOption, 
     CLOptions.DestOption, 
     CLOptions.DateOption,
-    CLOptions.IsOverride);
+    CLOptions.IsOverwrite);
 
 return rootCommand.Invoke(args);

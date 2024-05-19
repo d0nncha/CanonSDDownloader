@@ -18,8 +18,8 @@ public static class CLOptions
         () => DateTime.MinValue,
         "The date from which the photos should be uploaded");
 
-    public static readonly Option<bool> IsOverride = new (
-        "--override",
+    public static readonly Option<bool> IsOverwrite = new (
+        "--overwrite",
         () => false,
         "If 'true' the files will be overwritten");
 }
