@@ -11,8 +11,4 @@
       <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Compile Include="obj\CommandLineOptions.cs" />
-    </ItemGroup>
-
 </Project>
