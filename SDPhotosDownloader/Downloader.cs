@@ -1,4 +1,6 @@
-﻿namespace SDPhotosDownloader;
+﻿using System.Text;
+
+namespace SDPhotosDownloader;
 
 public static class Downloader
 {
@@ -81,7 +83,8 @@ public static class Downloader
         }
     }
 
-    private static DownloadResult Download(string destination, IDictionary<string, IList<FileInfo>> groupFiles, bool isOverwrite)
+    private static DownloadResult Download(string destination, IDictionary<string, 
+        IList<FileInfo>> groupFiles, bool isOverwrite)
     {
         var result = new DownloadResult();
         Console.Write("0%");
@@ -95,7 +98,8 @@ public static class Downloader
 
             foreach (var fileInfo in group.Value)
             {
-                var destFileName = Path.Combine(destFolder, fileInfo.Name);
+                var fileNameBuilder = $"{fileInfo.CreationTime:yyMMddhhmmss}_{fileInfo.Name}";
+                var destFileName = Path.Combine(destFolder, fileNameBuilder);
                 result.TotalProcessed++;
                 if (File.Exists(destFileName))
                 {
