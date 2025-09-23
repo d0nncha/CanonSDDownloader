@@ -98,7 +98,7 @@ public static class Downloader
 
             foreach (var fileInfo in group.Value)
             {
-                var fileNameBuilder = $"{fileInfo.CreationTime:yyMMddhhmmss}_{fileInfo.Name}";
+                var fileNameBuilder = $"{fileInfo.CreationTime:yyMMddHHmmss}_{fileInfo.Name}";
                 var destFileName = Path.Combine(destFolder, fileNameBuilder);
                 result.TotalProcessed++;
                 if (File.Exists(destFileName))
