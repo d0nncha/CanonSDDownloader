@@ -17,11 +17,11 @@ public class DownloadService
     {
         _consoleWriter.WriteLine($"Destination folder: {_options.DestPath}");
         _consoleWriter.WriteLine($"File upload start date: {_options.DateFrom:D}");
-        _consoleWriter.WriteLine($"Root folder: {_options.RootPath}");
+        _consoleWriter.WriteLine($"Root folder: {_options.SrcPath}");
         _consoleWriter.WriteLine("The starting of source scan...");
         
         var scanner = new DirectoryScanner(_fileSystem, _consoleWriter);
-        var scanResult = scanner.Scan(_options.RootPath, _options.DateFrom);
+        var scanResult = scanner.Scan(_options.SrcPath, _options.DateFrom);
         _consoleWriter.WriteLine($"Number of source files: {scanResult.FilesCount}");
         
         var destFreeSpace = scanner.GetDestinationFreeSpace(_options.DestPath);
